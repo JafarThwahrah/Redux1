@@ -1,0 +1,29 @@
+.footer{
+    background-color: #1976d2;
+    color: white;
+    font-weight: 500;
+    flex-wrap: wrap;
+    
+}
+footer{
+    display: flex;
+    justify-content: space-around;
+    color: white;;
+    font-weight: 500;
+    flex-wrap: wrap;
+    width: 100%;
+
+}
+ul{
+    list-style: none;
+    padding: 0;
+}
+
+.icons{
+    margin-right:8px;
+}
+
+p{
+    text-align: center;
+    margin-bottom: 0;
+}
