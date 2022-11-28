@@ -2,6 +2,7 @@ import React from "react";
 import "./Footer.css";
 import EmailIcon from "@mui/icons-material/Email";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
+
 function Footer() {
   return (
     <div className="footer">
@@ -9,8 +10,8 @@ function Footer() {
         <div>
           <h5>About us</h5>
           <p>
-            Carrjo is a platform where you can rent <br /> a car with reasonble
-            price
+            Lorem ipsum dolor, sit amet consectetur <br /> adipisicing elit.
+            Amet porro, quia eos labore asperiores nulla?
           </p>
         </div>
 
@@ -37,7 +38,7 @@ function Footer() {
           </ul>
         </div>
       </footer>
-      <p className="copywrite">&copy; 2022 CarsJo.team</p>
+      <p className="copywrite">&copy; 2022 JafarThwarhah</p>
     </div>
   );
 }

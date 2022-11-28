@@ -1,10 +1,8 @@
 import React from "react";
-import { connect } from "react-redux";
 import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
-export const Home = (props) => {
-  console.log(props);
+export const Home = () => {
   return (
     <div>
       <Header />
@@ -14,8 +12,4 @@ export const Home = (props) => {
   );
 };
 
-const readStateFromStoreAndPassItToProps = (state) => {
-  return { accounts: state.accounts };
-};
-
-export default connect(readStateFromStoreAndPassItToProps)(Home);
+export default Home;
