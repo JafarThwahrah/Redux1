@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { connect } from "react-redux";
+import { INCREMENT, DECREMENT } from "./store";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -32,40 +33,55 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 export function CustomizedTables(props) {
   console.log(props);
   return (
-    <TableContainer component={Paper}>
-      <Table sx={{ minWidth: 700 }} aria-label="customized table">
-        <TableHead>
-          <TableRow>
-            <StyledTableCell>ID</StyledTableCell>
-            <StyledTableCell align="right">Account Type</StyledTableCell>
-            <StyledTableCell align="right">Customer Name</StyledTableCell>
-            <StyledTableCell align="right">Account Number</StyledTableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {props.accounts?.map((row) => (
-            <StyledTableRow key={row.id}>
-              <StyledTableCell component="th" scope="row">
-                {row.id}
-              </StyledTableCell>
-              <StyledTableCell align="right">{row.id}</StyledTableCell>
+    <div>
+      <TableContainer component={Paper}>
+        <Table sx={{ minWidth: 700 }} aria-label="customized table">
+          <TableHead>
+            <TableRow>
+              <StyledTableCell>ID</StyledTableCell>
+              <StyledTableCell align="right">Account Type</StyledTableCell>
+              <StyledTableCell align="right">Customer Name</StyledTableCell>
+              <StyledTableCell align="right">Account Number</StyledTableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            {props.accounts?.map((row) => (
+              <StyledTableRow key={row.id}>
+                <StyledTableCell component="th" scope="row">
+                  {row.id}
+                </StyledTableCell>
+                <StyledTableCell align="right">{row.id}</StyledTableCell>
 
-              <StyledTableCell align="right">
-                {row.customerName}
-              </StyledTableCell>
-              <StyledTableCell align="right">
-                {row.accountNumber}
-              </StyledTableCell>
-            </StyledTableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+                <StyledTableCell align="right">
+                  {row.customerName}
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  {row.accountNumber}
+                </StyledTableCell>
+              </StyledTableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+      <p>{props.counter}</p>
+      <button
+        onClick={() => {
+          props.dispatch(INCREMENT());
+        }}>
+        +
+      </button>
+      <button
+        onClick={() => {
+          props.dispatch(DECREMENT());
+        }}>
+        -
+      </button>
+    </div>
   );
 }
 
 const readStateFromStoreAndPassItToProps = (state) => {
-  return { accounts: state.accounts };
+  return { counter: state };
 };
 
 export default connect(readStateFromStoreAndPassItToProps)(CustomizedTables);

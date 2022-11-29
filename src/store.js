@@ -17,9 +17,40 @@ const initState = {
   ],
 };
 
-const reducer = (state = initState, action) => {
-  return state;
+const INCREMENT = () => {
+  return {
+    type: "INCREMENT",
+  };
 };
-const store = createStore(reducer);
+
+const DECREMENT = () => {
+  return {
+    type: "DECREMENT",
+  };
+};
+
+const tableDataReducre = (state = initState, action) => {
+  return state.accounts;
+};
+const counterReducer = (state = 0, action) => {
+  switch (action.type) {
+    case "INCREMENT": {
+      return (state += 1);
+    }
+
+    case "DECREMENT": {
+      return (state -= 1);
+    }
+    default:
+      return state;
+  }
+};
+
+export { INCREMENT, DECREMENT };
+
+const store = createStore(counterReducer);
+
+// store.dispatch(INCREMENT());
+// store.dispatch(DECREMENT());
 
 export default store;
