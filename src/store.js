@@ -23,15 +23,19 @@ const initState = {
 const addAccountReducer = (state = initState, action) => {
   switch (action.type) {
     case "addAccount":
+      const newArray = [...state.accounts]; //Copying state array
+
+      newArray.splice(state.accounts.length, 0, ...action.payload);
+      //using splice to insert at an index
       return {
         ...state,
-        accounts: [...action.payload, state.accounts],
+        accounts: newArray,
       };
 
-    // case "append":
-    //   return {
-    //     accounts: [...state.accounts, action.payload],
-    //   };
+    case "append":
+      return {
+        accounts: [state.accounts, ...action.payload],
+      };
     default:
       return state;
   }
