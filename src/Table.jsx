@@ -49,7 +49,7 @@ export function CustomizedTables(props) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.accounts?.map((row) => (
+          {props.accounts.accounts?.map((row) => (
             <StyledTableRow key={Math.random(0, 100000)}>
               <StyledTableCell component="th" scope="row">
                 {row.id}

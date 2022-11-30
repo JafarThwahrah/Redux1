@@ -1,6 +1,8 @@
 import { createStore } from "redux";
+import loggedReducer from "./isLogged";
+import { combineReducers } from "redux";
 
-const initState = {
+const accounts = {
   accounts: [
     {
       id: 1,
@@ -20,11 +22,11 @@ const initState = {
 // const reducer1 = (state = initState, action) => {
 //   return state;
 // };
-const addAccountReducer = (state = initState, action) => {
+const addAccountReducer = (state = accounts, action) => {
   switch (action.type) {
     case "addAccount":
       const newArray = [...state.accounts]; //Copying state array
-
+      console.log(action.payload);
       newArray.splice(state.accounts.length, 0, ...action.payload);
       //using splice to insert at an index
       return {
@@ -52,6 +54,12 @@ const addAccountReducer = (state = initState, action) => {
   }
 };
 
+const allReducers = combineReducers({
+  accounts: addAccountReducer,
+  isLogged: loggedReducer,
+});
+console.log(accounts);
+
 export const addAccount = (...data) => {
   return {
     type: "addAccount",
@@ -66,6 +74,6 @@ export const deleteAccount = (...data) => {
   };
 };
 
-const store = createStore(addAccountReducer);
+const store = createStore(allReducers);
 
 export default store;

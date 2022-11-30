@@ -21,9 +21,11 @@ function Form(props) {
 
   function handleSubmit(event) {
     event.preventDefault();
+    console.log(props);
+
     const data = new FormData(event.currentTarget);
     let addedData = {
-      id: props.accounts.length + 1,
+      id: props.state.accounts.accounts.length + 1,
       customerName: name,
       accountNumber: Math.random(),
       accountType: account,
@@ -31,7 +33,6 @@ function Form(props) {
 
     props.dispatch(addAccount(addedData));
   }
-  console.log(props);
   return (
     <div style={{ display: "flex", justifyContent: "center", margin: "2rem" }}>
       <Box
@@ -86,6 +87,6 @@ function Form(props) {
   );
 }
 const readStateFromStoreAndPassItToProps = (state) => {
-  return { accounts: state.accounts };
+  return { state };
 };
 export default connect(readStateFromStoreAndPassItToProps)(Form);
