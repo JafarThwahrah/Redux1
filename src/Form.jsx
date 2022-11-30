@@ -28,10 +28,6 @@ function Form(props) {
       accountNumber: Math.random(),
       accountType: account,
     };
-    // data.append("id", props.accounts.length++);
-    // data.append("name", name);
-    // data.append("account", account);
-    // data.append("accountNumber", Math.random());
 
     console.log(data);
     props.dispatch(addAccount(addedData));
