@@ -23,7 +23,7 @@ function Form(props) {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     let addedData = {
-      id: props.accounts.length,
+      id: props.accounts.length + 1,
       customerName: name,
       accountNumber: Math.random(),
       accountType: account,
