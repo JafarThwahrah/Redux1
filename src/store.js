@@ -17,9 +17,33 @@ const initState = {
   ],
 };
 
-const reducer = (state = initState, action) => {
-  return state;
+// const reducer1 = (state = initState, action) => {
+//   return state;
+// };
+const addAccountReducer = (state = initState, action) => {
+  switch (action.type) {
+    case "addAccount":
+      return {
+        ...state,
+        accounts: [...action.payload, state.accounts],
+      };
+
+    // case "append":
+    //   return {
+    //     accounts: [...state.accounts, action.payload],
+    //   };
+    default:
+      return state;
+  }
 };
-const store = createStore(reducer);
+
+export const addAccount = (...data) => {
+  return {
+    type: "addAccount",
+    payload: data,
+  };
+};
+
+const store = createStore(addAccountReducer);
 
 export default store;
