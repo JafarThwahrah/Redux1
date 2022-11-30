@@ -29,7 +29,6 @@ function Form(props) {
       accountType: account,
     };
 
-    console.log(data);
     props.dispatch(addAccount(addedData));
   }
   console.log(props);
@@ -66,7 +65,7 @@ function Form(props) {
           />
 
           <FormControl style={{ margin: "1rem", width: "11.5rem" }}>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-label">Account</InputLabel>
             <Select
               labelId="demo-simple-select-label"
               id="demo-simple-select"

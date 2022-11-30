@@ -8,6 +8,7 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { connect } from "react-redux";
+import { deleteAccount } from "./store";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${tableCellClasses.head}`]: {
@@ -30,7 +31,11 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 }));
 
 export function CustomizedTables(props) {
-  console.log(props);
+  function handleDelete(id) {
+    console.log(props);
+
+    props.dispatch(deleteAccount(id));
+  }
   return (
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 700 }} aria-label="customized table">
@@ -40,6 +45,7 @@ export function CustomizedTables(props) {
             <StyledTableCell align="right">Account Type</StyledTableCell>
             <StyledTableCell align="right">Customer Name</StyledTableCell>
             <StyledTableCell align="right">Account Number</StyledTableCell>
+            <StyledTableCell align="right">Delete</StyledTableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -55,6 +61,9 @@ export function CustomizedTables(props) {
               </StyledTableCell>
               <StyledTableCell align="right">
                 {row.accountNumber}
+              </StyledTableCell>
+              <StyledTableCell align="right">
+                <button onClick={(e) => handleDelete(row.id)}>Delete</button>
               </StyledTableCell>
             </StyledTableRow>
           ))}

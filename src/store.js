@@ -34,7 +34,18 @@ const addAccountReducer = (state = initState, action) => {
 
     case "append":
       return {
+        ...state,
         accounts: [state.accounts, ...action.payload],
+      };
+
+    case "delete":
+      return {
+        // returning a copy of orignal state
+        ...state, //copying the original state
+        accounts: state.accounts.filter(
+          (account) => account.id != action.payload
+        ),
+        // returns a new filtered todos array
       };
     default:
       return state;
@@ -44,6 +55,13 @@ const addAccountReducer = (state = initState, action) => {
 export const addAccount = (...data) => {
   return {
     type: "addAccount",
+    payload: data,
+  };
+};
+
+export const deleteAccount = (...data) => {
+  return {
+    type: "delete",
     payload: data,
   };
 };
